@@ -20,3 +20,4 @@ The JSON-model used in the app to map the tweets is based on the collections gen
 4. Edit `server/config/config.js`  to point to your local MongoDB collection
 5. To add your coding scheme reference, edit `client/src/components/CodeScheme.vue`
 6. Run `mevn serve`and start the server first, then open another terminal window and run it again to start the client. Happy coding.
+7. Analyse your coded datasets in R/Python/your favored data science tool.
