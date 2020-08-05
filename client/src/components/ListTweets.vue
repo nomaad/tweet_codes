@@ -15,7 +15,7 @@
                 <!--<button type="button" class="btn btn-primary btn-lg ">Previous</button>-->
               </div>
               <div class="col-4">
-                <input class="form-control form-control-lg" type="text" placeholder="Enter Code" v-model="tweet.code">
+                <input @focus="$event.target.select()" ref="code" class="form-control form-control-lg" type="text" placeholder="Enter Code" v-model="tweet.code">
               </div>
               <div class="col-4">
                 <button @click.prevent="updateTweet(tweet)" class="btn btn-primary btn-lg float-right">Save &amp; Next</button>
@@ -61,28 +61,46 @@ export default {
     };
   },
   methods: {
+    loadRandomTweet(){
+      axios.get("http://localhost:9000/api/random-tweet")
+        .then(res => {
+          this.tweet = res.data;
+          if(this.tweet.code == null){
+            this.$set(this.tweet, 'code', null) //add a new property
+          }
+          console.log(this.tweet)
+          this.$refs.code.focus();
+        })
+        .catch(error => {
+          console.log(error)
+          // Manage errors if found any
+        })
+    },
     updateTweet(tweet) {
       let apiURL = `http://localhost:9000/api/update-tweet/${tweet._id}`;
       console.log(tweet)
       axios.post(apiURL, this.tweet).then((res) => {
         console.log(res)
-        //this.$router.push('/view')
+        this.loadRandomTweet() //load a new random tweet
         }).catch(error => {
           console.log(error)
         });
+    },
+    keystrokeListener(event) {
+      if (event.key === "Enter" || event.key === "ArrowRight") {
+        this.updateTweet(this.tweet)
+      }
     }
   },
+  created() {
+    window.addEventListener("keydown", this.keystrokeListener);
+  },
+  // make sure you remove the listener when the component is no longer visible
+  destroyed() {
+    window.removeEventListener("keydown", this.keystrokeListener);
+  },
   mounted() {
-    axios.get("http://localhost:9000/api/random-tweet")
-      .then(res => {
-        this.tweet = res.data;
-        this.$set(this.tweet, 'code', 0)
-        console.log(this.tweet)
-      })
-      .catch(error => {
-        console.log(error)
-        // Manage errors if found any
-      })
+    this.loadRandomTweet()
   }
 };
 </script>
