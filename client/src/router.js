@@ -13,11 +13,6 @@ export default new Router({
       component: () => import('@/components/ListTweets.vue')
     },
     {
-      path: '/edit/:id',
-      name: 'edit',
-      component: () => import('@/components/EditTweet.vue')
-    },
-    {
       path: "/about",
       name: "about",
       component: () => import("./views/About.vue")

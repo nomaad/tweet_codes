@@ -10,13 +10,13 @@
         </tr>
         <tr>
           <th scope="row">1</th>
-          <td><b>Solutionist</b></td>
-          <td>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</td>
+          <td><b>Critique</b></td>
+          <td>Qanon is criticized. Tweets try to raise awareness about conspiracy theories and far right ideology.</td>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td><b>Covidiot</b></td>
-          <td>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</td>
+          <td><b>Support</b></td>
+          <td>Identification with the conspiracy theory and dissemination of its contents.</td>
         </tr>
       </table>
     </div>
