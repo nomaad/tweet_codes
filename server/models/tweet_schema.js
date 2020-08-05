@@ -36,6 +36,9 @@ const tweetSchema = new Schema({
   user_id: {
     type: Number
   },
+  code: {
+    type: Number
+  },
 }, {
   collection: 'tweet'
 })
