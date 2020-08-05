@@ -15,16 +15,16 @@ router.route('/').get((req, res) => {
    })
  })
 
-// Find random tweet
+// Find random tweet without code
 router.route('/random-tweet').get((req, res) => {
   // Get the count of all users
-  TweetModel.count().exec(function (err, count) {
+  TweetModel.count({ code: null }).exec(function (err, count) {
     console.log(count)
     // Get a random entry
     var random = Math.floor(Math.random() * count)
     console.log("Random:" + random)
     // Again query all users but only fetch one offset by our random #
-    TweetModel.findOne().skip(random).exec(
+    TweetModel.findOne({ code: null }).skip(random).exec(
       function (error, result) {
         if (error) {
           console.log(error)
@@ -34,20 +34,6 @@ router.route('/random-tweet').get((req, res) => {
           res.json(result)
         }
       })
-  })
-})
-
-// Find tweet by ID
-router.route('/find-one').get((req, res) => {
-  //res.json({foo:"bar"})
-   TweetModel.findOne((error, data) => {
-    if (error) {
-      console.log(error)
-      //return next(error)
-    } else {
-      console.log(data)
-      res.json(data)
-    }
   })
 })
 
