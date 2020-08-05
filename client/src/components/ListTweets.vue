@@ -6,8 +6,8 @@
         <form @submit.prevent="handleSubmitForm">
           <div class="shadow p-3 mb-5 mt-5 bg-light rounded">
             <p><i>Tweet:</i></p>
-            <h5>"{{ tweet.body }}"</h5>
-            <p class="small">ID: {{ tweet.id }}</p>
+            <h5>{{ tweet.text }}</h5>
+            <p class="small">ID: {{ tweet.ID }}| Date: {{tweet.datetime}} </p>
             <div class="row">
               <div class="col-12">
                 <hr />
@@ -66,7 +66,7 @@ export default {
     handleSubmitForm() { }
   },
   mounted() {
-    axios.get("https://jsonplaceholder.typicode.com/posts/1")
+    axios.get("http://localhost:9000/api/random-tweet")
       .then(res => {
         this.tweet = res.data;
         console.log(this.tweet)
