@@ -12,7 +12,7 @@
                 <hr />
               </div>
               <div class="col-4">
-                <!--<button type="button" class="btn btn-primary btn-lg ">Previous</button>-->
+                <button @click.prevent="previous()" class="btn btn-primary btn-lg ">Previous</button>
               </div>
               <div class="col-4">
                 <input @focus="$event.target.select()" ref="code" class="form-control form-control-lg" type="text" placeholder="Enter Code" v-model="tweet.code">
@@ -37,7 +37,8 @@ import CodeScheme from "@/components/CodeScheme.vue";
 export default {
   data() {
     return {
-      tweet: {}
+      tweet: {},
+      lastIds: []
     };
   },
   components: {
@@ -45,7 +46,11 @@ export default {
   },
   methods: {
     loadRandomTweet(){
-      axios.get("http://localhost:9000/api/random-tweet")
+      let url = "http://localhost:9000/api/random-tweet"
+      this.loadTweet(url)
+    },
+    loadTweet(url){
+      axios.get(url)
         .then(res => {
           this.tweet = res.data;
           if(this.tweet.code == null){
@@ -59,6 +64,10 @@ export default {
           // Manage errors if found any
         })
     },
+    previous(){
+      let url = "http://localhost:9000/api/edit-tweet/" + this.lastIds.pop()
+      this.loadTweet(url)
+    },
     updateTweet(tweet) {
       if(tweet.code == null){
         this.$refs.code.focus();
@@ -68,6 +77,7 @@ export default {
       console.log(tweet)
       axios.post(apiURL, this.tweet).then((res) => {
         console.log(res)
+        this.lastIds.push(tweet._id)
         this.loadRandomTweet() //load a new random tweet
         }).catch(error => {
           console.log(error)
@@ -76,6 +86,9 @@ export default {
     keystrokeListener(event) {
       if (event.key === "Enter" || event.key === "ArrowRight") {
         this.updateTweet(this.tweet)
+      }
+      if (event.key === "ArrowLeft") {
+        this.previous()
       }
     }
   },
