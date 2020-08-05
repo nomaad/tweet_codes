@@ -1,32 +1,34 @@
 <template>
-  <div class="row">
-    <div class="col-12">
+<div class="row">
+  <div class="col-12">
     <div class="row">
       <div class="col-12">
-        <div class="shadow p-3 mb-5 mt-5 bg-light rounded">
-          <p><i>Tweet:</i></p>
-          <h5>"Level 14 der #CoronaWarnApp entpuppt sich bei mir als wahrer Endgegner. Seit Tagen hänge ich in dem Level."</h5>
-          <div class="row">
-            <div class="col-12">
-              <hr />
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary btn-lg ">Previous</button>
-            </div>
-            <div class="col-4">
-              <input class="form-control form-control-lg" type="text" placeholder="Enter Code">
-            </div>
-            <div class="col-4">
-              <button type="button" class="btn btn-primary btn-lg float-right">Save &amp; Next</button>
+        <form @submit.prevent="handleSubmitForm">
+          <div class="shadow p-3 mb-5 mt-5 bg-light rounded">
+            <p><i>Tweet:</i></p>
+            <h5>"{{ tweet.body }}"</h5>
+            <p class="small">ID: {{ tweet.id }}</p>
+            <div class="row">
+              <div class="col-12">
+                <hr />
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg ">Previous</button>
+              </div>
+              <div class="col-4">
+                <input class="form-control form-control-lg" type="text" placeholder="Enter Code" v-model="tweet.title">
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-primary btn-lg float-right">Save &amp; Next</button>
+              </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <hr style="">
         <h5>Coding Scheme:</h5>
         <table class="table table-striped">
           <tr>
@@ -52,9 +54,27 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
-    return {}
+    return {
+      tweet: {}
+    };
+  },
+  methods: {
+    handleSubmitForm() { }
+  },
+  mounted() {
+    axios.get("https://jsonplaceholder.typicode.com/posts/1")
+      .then(res => {
+        this.tweet = res.data;
+        console.log(this.tweet)
+      })
+      .catch(error => {
+        console.log(error)
+         // Manage errors if found any
+      })
   }
-}
+};
 </script>
