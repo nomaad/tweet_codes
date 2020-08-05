@@ -2,7 +2,7 @@
   <div id="app" class="container">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills float-right">
+          <ul class="nav float-right">
             <li class="nav-item">
               <router-link to="/" class="nav-link active">Home</router-link>
             </li>
@@ -11,10 +11,9 @@
             </li>
           </ul>
         </nav>
-        <h3 class="text-muted">Tweet Coder</h3>
+        <h5 class="text-muted">Tweet Coder</h5>
       </div>
     <router-view />
-
   </div>
 </template>
 
@@ -22,7 +21,7 @@
 
 /* Space out content a bit */
 body {
-  padding-top: 1.5rem;
+  padding-top: 0.5rem;
   padding-bottom: 1.5rem;
   background-color:#fff;
 }
@@ -37,14 +36,13 @@ body {
 
 /* Custom page header */
 .header {
-  padding-bottom: 1rem;
   border-bottom: .05rem solid #e5e5e5;
 }
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
+.header h5 {
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 3rem;
+  padding-top:0.5rem;
 }
 
 /* Custom page footer */

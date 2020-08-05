@@ -3,7 +3,7 @@
   <div class="col-12">
     <div class="row">
       <div class="col-12">
-          <div class="shadow p-3 mb-5 mt-5 bg-light rounded">
+          <div class="shadow p-3 mb-4 mt-4 bg-light rounded">
             <p><i>Tweet:</i></p>
             <h5>{{ tweet.text }}</h5>
             <p class="small">ID: {{ tweet.ID }}| Date: {{tweet.datetime}} </p>
