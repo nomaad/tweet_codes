@@ -12,13 +12,13 @@
                 <hr />
               </div>
               <div class="col-4">
-                <button @click.prevent="previous()" class="btn btn-primary btn-lg ">Previous</button>
+                <button v-if="this.lastIds.length > 0" @click.prevent="previous()" class="btn btn-primary btn-lg ">Previous</button>
               </div>
               <div class="col-4">
                 <input @focus="$event.target.select()" ref="code" class="form-control form-control-lg" type="text" placeholder="Enter Code" v-model="tweet.code">
               </div>
               <div class="col-4">
-                <button @click.prevent="updateTweet(tweet)" class="btn btn-primary btn-lg float-right">Save &amp; Next</button>
+                <button @click.prevent="updateTweet(tweet)" class="btn btn-primary btn-lg float-right">Save &amp; New</button>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default {
       if (event.key === "Enter" || event.key === "ArrowRight") {
         this.updateTweet(this.tweet)
       }
-      if (event.key === "ArrowLeft") {
+      if (event.key === "ArrowLeft" && this.lastIds.length > 0) {
         this.previous()
       }
     }
