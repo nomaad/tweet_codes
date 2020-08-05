@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/mevn.jpg" width="350" />
-    <HelloWorld msg="Basic Boilerplate Template" />
+    <ListTweets msg="List tweets" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ListTweets from "@/components/ListTweets.vue";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    ListTweets
   }
 };
 </script>

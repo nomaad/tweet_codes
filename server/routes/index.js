@@ -1,13 +1,17 @@
-// Define your routes
 import express from 'express';
-import path from 'path';
+
+import {
+  createData,
+  readData,
+  updateData,
+  deleteData,
+} from '../controllers/user_controller';
+
 const router = express.Router();
 
-// Routes go here.
-router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../views', 'index.html'));
-});
-
-// Use localhost:9000/api followed by the required path.
+router.post('/enter_api', createData);
+router.get('/enter_api', readData);
+router.put('/enter_api/:id', updateData);
+router.delete('/enter_api/:id', deleteData);
 
 module.exports = router;
