@@ -7,7 +7,7 @@ const tweetSchema = new Schema({
     type: String
   },
   ID: {
-    type: Number
+    type: String
   },
   text: {
     type: String
@@ -25,7 +25,7 @@ const tweetSchema = new Schema({
     type: Number
   },
   datetime: {
-    type: Date
+    type: String
   },
   is_reply: {
     type: Boolean
@@ -34,7 +34,7 @@ const tweetSchema = new Schema({
     type: Boolean
   },
   user_id: {
-    type: Number
+    type: String
   },
   code: {
     type: Number
